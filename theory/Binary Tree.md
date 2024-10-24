@@ -118,3 +118,86 @@ This code is **not meant to be fast**, but it is just to show the fundamentals o
 ### Deletion (Removal)
 If we want to remove an element, it will do it by prioritizing substituting the node with one of the right or left subtrees, depending on the algorithm. Besides that, the focus of the process of deletion is to do that while we maintain our tree structure.
 For the algorithm below, we will do something kinda different, but it's just to show.
+
+```
+def deletion(parent, node_to_delete):
+    side = "r" if node_to_delete == parent.right else "l"
+
+    if node_to_delete.right == None != node_to_delete.left == None:
+        if node_to_delete.right:
+            if side == "l":
+                parent.left = node_to_delete.right
+            else:
+                parent.right = node_to_delete.left
+        else:
+            if side == "l":
+                parent.left = node_to_delete.left
+            else:
+                parent.right = node_to_delete.right
+
+    elif node_to_delete.right == None and node_to_delete.left == None:
+        if side == "l":
+            parent.left = None
+        else:
+            parent.right = None
+
+    else:
+        left_child = node_to_delete.left
+        right_child = node_to_delete.right
+        node = right_child
+
+        space = False
+        while not space:
+            if node.left == None or node.right == None:
+                space = True
+            else:
+                node = node.right
+        
+        if node.right == None:
+            node.right = left_child
+        else:
+            node.right = left_child
+
+        if side == "l":
+            parent.left = right_child
+        else:
+            parent.right = right_child
+```
+
+This implementation basically does like this:
+![[Binary tree deletion.png]]
+It will "maintain" the structure, sending the "orphan" from the Node deleted to be one of the leaves of our tree. I did this because this way i kinda preserved the structure while allowing for our elements that i didn't plan on deleting being more accessible than our deleted node's child. But this is just a implementation. Depending on what i wanted to do it would change.
+
+### Searching 
+This is the most straight to the point aspect about our binary tree. This would just be a implementation of one of those algorithms quoted before, DFS and BFS. 
+
+This is a implementation of DFS meant just to find if a node is in that graph.
+def DFS(root, node):
+```
+    if node == root:
+        return True
+    
+    left = right = False
+
+    if root.left != None:
+        left = DFS(root.left, node)
+    if root.right != None:
+        right = DFS(root.right, node)
+    
+    return left or right
+```
+
+
+
+## Operations complexity
+Most of the algorithms above are just to show, they aren't being tested for complexity, that's also why i tried doing them in python, just to learn the fundamentals.
+If we analyze the operations inside the Binary Trees as something more optimized, this is the order of complexity of them.
+
+| Operation                  | Time Complexity | Auxiliary Space |
+| -------------------------- | --------------- | --------------- |
+| **In-Order Traversal**     | O(n)            | O(n)            |
+| **Pre-Order Traversal**    | O(n)            | O(n)            |
+| **Post-Order Traversal**   | O(n)            | O(n)            |
+| **Insertion (Unbalanced)** | O(n)            | O(n)            |
+| **Searching (Unbalanced)** | O(n)            | O(n)            |
+| **Deletion (Unbalanced)**  | O(n)            | O(n)            |
