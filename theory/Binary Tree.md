@@ -201,3 +201,21 @@ If we analyze the operations inside the Binary Trees as something more optimized
 | **Insertion (Unbalanced)** | O(n)            | O(n)            |
 | **Searching (Unbalanced)** | O(n)            | O(n)            |
 | **Deletion (Unbalanced)**  | O(n)            | O(n)            |
+
+
+### Reasons to use
+- Efficiency search -> Binary Search Trees
+	- Efficient when searching for a specific element
+- Memory efficiency
+
+### Reasons to NOT use
+- Limited structure
+- Unbalanced trees could be formed 
+- Space inefficiency
+- Worst case scenarios -> $2^n$
+
+## Uses
+- Hierarchical data
+- Huffman Coding trees -> Data compression
+- Priority queue
+- Decision trees
