@@ -50,8 +50,8 @@ Also, for complement:
 **Traversal -> visiting all nodes**
 #### **DFS** - Depth First Search
 Visits all nodes by deepening to the highest level before backtracking and then visiting others
-- **Preorder Traversal** (**CURRENT -> LEFT -> RIGHT**) -> Left subtree, then the right subtree
-- **Inorder Traversal** (**CURRENT -> RIGHT -> LEFT**) -> Right subtree, then the left subtree
+- **Preorder Traversal** (**CURRENT -> LEFT -> RIGHT**) -> Current, Left subtree, then the right subtree
+- **Inorder Traversal** (**LEFT -> CURRENT -> RIGHT**) ->  Left subtree, then current, and just then right subtree
 - **Postorder Traversal** (**LEFT -> RIGHT -> CURRENT**) -> It will explore the current node just after exploring the subtrees.
 
 #### BFS - Breadth First Search
