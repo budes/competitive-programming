@@ -44,7 +44,7 @@ vector<string> infixa_vector(Node* root) {
     }
     resultado.push_back(root->v);
     
-    if (root->r != nullptr) { 
+    if (root->r != nullptr) {
         for (string elemento: infixa_vector(root->r)) {
             resultado.push_back(elemento);
         }
@@ -97,32 +97,30 @@ int main() {
     Node* root = nullptr;
     string a; 
     string v;
-    while (true) {
-        cin >> a; 
+    while (cin >> a) {
         if (a.size() == 1) {
-            cin >> v;
+            if (!(cin >> v)) {
+                break;
+            }
         }
 
         if (a == "I") {
             if (root == nullptr) { root = new Node(v); }
             else { 
-                queue<Node*> q;
-                q.push(root);
-                
-                while (true) {
-                    if (q.front()->r == nullptr) {
-                        q.front()->r = new Node(v);
-                        break;
-                    } 
-                    if (q.front()->l == nullptr) {
-                        q.front()->l = new Node(v);
-                        break;
+                Node* current = root;
+                bool added = false;
+                while (!added) {
+                    if (current->v >= v && current->l != nullptr) {
+                        current = current->l;
+                    } else if (current->v >= v) {
+                        current->l = new Node(v);
+                        added = true;
+                    } else if (current->r != nullptr) {
+                        current = current->r;
+                    } else {
+                        current->r = new Node(v);
+                        added = true;
                     }
-
-                    if (q.front()->r != nullptr) { q.push(q.front()->r); }
-                    if (q.front()->l != nullptr) { q.push(q.front()->l); }
-                    
-                    q.pop();
                     
                 }
             }
@@ -135,7 +133,7 @@ int main() {
         else if (a == "INFIXA") {
             vector<string> resultado = infixa_vector(root);
 
-            for (int i = 0; i <= resultado.size(); i++) {
+            for (int i = 0; i < resultado.size(); i++) {
                 if (i != 0) {
                     cout << " ";
                 }
@@ -148,7 +146,7 @@ int main() {
         else if (a == "PREFIXA") {
             vector<string> resultado = prefixa_vector(root);
 
-            for (int i = 0; i <= resultado.size(); i++) {
+            for (int i = 0; i < resultado.size(); i++) {
                 if (i != 0) {
                     cout << " ";
                 }
@@ -161,7 +159,7 @@ int main() {
         else if (a == "POSFIXA") {
             vector<string> resultado = posfixa_vector(root);
 
-            for (int i = 0; i <= resultado.size(); i++) {
+            for (int i = 0; i < resultado.size(); i++) {
                 if (i != 0) {
                     cout << " ";
                 }
