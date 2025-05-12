@@ -11,5 +11,3 @@ So to keep it updated i will translate everything to here:
 - [ ] Árvore de Fenwick (Binary Indexed Tree – BIT)
 - [ ] Árvore de Segmentos (SegTree)
 - [ ] Árvore de Prefixos (Trie)
-
-Also, i'm mainly using C, so i will try to start learning C++ after this week.
