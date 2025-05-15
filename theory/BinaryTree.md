@@ -44,7 +44,6 @@ Also, for complement:
 - **B+ Tree:** A variant of the B tree where all data is stored in leaf nodes, and internal nodes only store keys for searching.
 - **Segment Tree:** A data structure used to efficiently perform range queries on an array.
 
-
 # Operations
 ## Traversal 
 **Traversal -> visiting all nodes**
@@ -115,6 +114,57 @@ print(E == A.right)
 
 This code is **not meant to be fast**, but it is just to show the fundamentals of what i am talking about.
 
+Also, the most standard way to implement a binary tree is to add an element based on it's value relative to another.
+Like:
+
+```
+# ==== OUR TREE ====
+"""
+Our tree:
+    ____A
+____B___       
+C       D
+"""
+
+A = Node("A")
+B = Node("B")
+C = Node("C")
+D = Node("D")
+
+A.left = B
+B.left = C
+B.right = D
+# =================
+
+# To add
+E = Node("E")
+
+def addition(root, node_to_add):
+    next = []
+    tovisit = root
+
+    added = False
+    if root == null: root = node_to_add
+    else:
+        while not added:
+            if tovisit.key < node_to_add.key:
+                if tovisit.left == null:
+                    added = true
+                    tovisit.left = node_to_add
+                else:
+                    tovisit = tovisit.left
+                    continue
+            else:
+                if tovisit.right == null:
+                    added = true
+                    tovisit.right = node_to_add
+                else:
+                    tovisit = tovisit.right
+                    continue
+
+addition(A, E)
+print(E == A.right)
+`
 ### Deletion (Removal)
 If we want to remove an element, it will do it by prioritizing substituting the node with one of the right or left subtrees, depending on the algorithm. Besides that, the focus of the process of deletion is to do that while we maintain our tree structure.
 For the algorithm below, we will do something kinda different, but it's just to show.
