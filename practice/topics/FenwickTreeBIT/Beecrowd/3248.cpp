@@ -27,6 +27,8 @@ int main() {
     int numbers[s];
     for (int t = 0; t < s; t++) {
          cin >> numbers[t];
+        
+        
 
     }
 
